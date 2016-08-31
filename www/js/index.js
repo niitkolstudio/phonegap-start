@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+	document.getElementById('btnCalculate').addEventListener('click', onCalculate.bind(this), false);
     },
     // deviceready Event Handler
     //
@@ -45,5 +46,22 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+	onCalculate:function(){
+	var b=document.getElementById('leng').value;
+	var h=document.getElementById('bred').value;
+	if(b.length==0 || h.length==0)
+	{
+		document.getElementById('res').innerHTML = 'ERROR! Please fill all the fields';
+	}
+	else if(b==0 ||h==0){
+		document.getElementById('res').innerHTML = 'ERROR! Please fenter valid values';
+	}
+	else{
+		var x=parseInt(b);
+		var y=parseInt(h);
+		var area=x*y;
+		document.getElementById('res').innerHTML ="Area = "+area;
+	}
+}
 };
